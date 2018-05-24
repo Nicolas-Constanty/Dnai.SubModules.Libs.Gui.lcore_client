@@ -7,7 +7,7 @@
 QT       -= gui
 QT      += network
 
-TARGET = CoreClient
+TARGET = core_client
 CONFIG += staticlib
 CONFIG -= app_bundle
 CONFIG += c++14
