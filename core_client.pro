@@ -22,8 +22,8 @@ TEMPLATE = lib
 DEFINES += QT_DEPRECATED_WARNINGS
 
 INCLUDEPATH += \
-    $${PWD}/../Cerealization/repository/include/ \
-    $${PWD}/../event_client/include/ \
+    $${PWD}/../lcerealization/repository/include/ \
+    $${PWD}/../levent_client/include/ \
     $${PWD}/include/
 
 LIBS += -lEventClient -lCerealization
