@@ -1,0 +1,14 @@
+
+x64/
+
+GeneratedFiles/
+
+release/
+
+debug/
+
+*.user
+
+*.filters
+
+*.vcxproj
