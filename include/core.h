@@ -132,7 +132,7 @@ inline namespace core
         void onDeclareError(std::function<void(EntityID, ENTITY, QString, VISIBILITY, QString)> const &error);
 
         void remove(EntityID declarator, QString const &name);
-        void onRemoved(std::function<void(EntityID, QString)> const &then);
+        void onRemoved(std::function<void(EntityID, QString, std::list<EntityID>)> const &then);
         void onRemoveError(std::function<void(EntityID, QString, QString)> const &error);
 
         void rename(EntityID declarator, QString const &name, QString const &newName);

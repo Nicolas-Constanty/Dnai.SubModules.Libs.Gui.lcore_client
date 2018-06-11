@@ -112,7 +112,7 @@ namespace core
             Client::shared().callCommand("DECLARATOR.REMOVE", declarator, name);
         }
 
-        void onRemoved(const std::function<void (EntityID, QString)> &then)
+        void onRemoved(const std::function<void (EntityID, QString, std::list<EntityID>)> &then)
         {
             Client::shared().registerReply("DECLARATOR.REMOVED", then);
         }
