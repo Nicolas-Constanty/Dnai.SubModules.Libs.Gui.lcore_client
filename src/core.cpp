@@ -414,6 +414,22 @@ namespace core
             {
                 Client::shared().registerReply("FUNCTION.INSTRUCTION.UNLINK_EXECUTION.ERROR", error);
             }
+
+            void setInputValue(EntityID function, InstructionID instruction, const QString &input, const QString &value)
+            {
+                Client::shared().callCommand("FUNCTION.INSTRUCTION.SET_INPUT_VALUE", function, instruction, input, value);
+            }
+
+            void onInputValueSet(const std::function<void (EntityID, InstructionID, QString, QString)> &then)
+            {
+                Client::shared().registerReply("FUNCTION.INSTRUCTION.INPUT_VALUE_SET", then);
+            }
+
+            void onSetInputValueError(const std::function<void (EntityID, InstructionID, QString, QString, QString)> &error)
+            {
+                Client::shared().registerReply("FUNCTION.INSTRUCTION.SET_INPUT_VALUE.ERROR", error);
+            }
+
         }
     }
 

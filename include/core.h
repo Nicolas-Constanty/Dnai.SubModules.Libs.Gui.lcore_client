@@ -221,6 +221,10 @@ inline namespace core
             void unlinkExecution(EntityID function, InstructionID instruction, InstructionPin outPin);
             void onExecutionUnlinked(std::function<void(EntityID, InstructionID, InstructionPin)> const &then);
             void onUnlinkExecutionError(std::function<void(EntityID, InstructionID, InstructionPin, QString)> const &error);
+
+            void setInputValue(EntityID function, InstructionID instruction, QString const &input, QString const &value);
+            void onInputValueSet(std::function<void(EntityID, InstructionID, QString, QString)> const &then);
+            void onSetInputValueError(std::function<void(EntityID, InstructionID, QString, QString, QString)> const &error);
         }
     }
 
