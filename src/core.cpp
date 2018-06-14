@@ -323,6 +323,21 @@ namespace core
             Client::shared().registerReply("FUNCTION.CALL.ERROR", error);
         }
 
+        void setEntryPoint(EntityID function, InstructionID instruction)
+        {
+            Client::shared().callCommand("FUNCTION.SET_ENTRY_POINT", function, instruction);
+        }
+
+        void onEntryPointSet(const std::function<void (EntityID, InstructionID)> &then)
+        {
+            Client::shared().registerReply("FUNCTION.ENTRY_POINT_SET", then);
+        }
+
+        void onSetEntryPointError(const std::function<void (EntityID, InstructionID, QString)> &error)
+        {
+            Client::shared().registerReply("FUNCTION.SET_ENTRY_POINT.ERROR", error);
+        }
+
         namespace instruction
         {
             void remove(EntityID function, InstructionID instruction)
@@ -338,21 +353,6 @@ namespace core
             void onRemoveError(const std::function<void (EntityID, InstructionID, QString)> &error)
             {
                 Client::shared().registerReply("FUNCTION.INSTRUCTION.REMOVE.ERROR", error);
-            }
-
-            void setEntryPoint(EntityID function, InstructionID instruction)
-            {
-                Client::shared().callCommand("FUNCTION.INSTRUCTION.SET_ENTRY_POINT", function, instruction);
-            }
-
-            void onEntryPointSet(const std::function<void (EntityID, InstructionID)> &then)
-            {
-                Client::shared().registerReply("FUNCTION.INSTRUCTION.ENTRY_POINT_SET", then);
-            }
-
-            void onSetEntryPointError(const std::function<void (EntityID, InstructionID, QString)> &error)
-            {
-                Client::shared().registerReply("FUNCTION.INSTRUCTION.SET_ENTRY_POINT.ERROR", error);
             }
 
             void linkData(EntityID function, InstructionID instruction, const QString &inputName, InstructionID fromInstruction, const QString &output)
