@@ -251,9 +251,15 @@ inline namespace core
 
     namespace object
     {
-        //set attribute
+        void addAttribute(EntityID obj, QString const &name, EntityID type, VISIBILITY visibility);
+        void onAttributeAdded(std::function<void(EntityID, QString, EntityID, VISIBILITY)> const &then);
+        void onAddAttributeError(std::function<void(EntityID, QString, EntityID, VISIBILITY, QString)> const &error);
+
+        void removeAttribute(EntityID obj, QString const &name);
+        void onAttributeRemoved(std::function<void(EntityID, QString)> const &then);
+        void onRemoveAttributeError(std::function<void(EntityID, QString, QString)> const &error);
+
         //rename attribute
-        //remove attribute
         //get attributes
         //get attribute
         //set function as member

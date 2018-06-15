@@ -465,4 +465,37 @@ namespace core
             Client::shared().registerReply("ENUM.REMOVE_VALUE.ERROR", error);
         }
     }
+
+    namespace object
+    {
+        void addAttribute(EntityID obj, const QString &name, EntityID type, VISIBILITY visibility)
+        {
+            Client::shared().callCommand("CLASS.ADD_ATTRIBUTE", obj, name, type, visibility);
+        }
+
+        void onAttributeAdded(const std::function<void (EntityID, QString, EntityID, VISIBILITY)> &then)
+        {
+            Client::shared().registerReply("CLASS.ATTRIBUTE_ADDED", then);
+        }
+
+        void onAddAttributeError(const std::function<void (EntityID, QString, EntityID, VISIBILITY, QString)> &error)
+        {
+            Client::shared().registerReply("CLASS.ADD_ATTRIBUTE.ERROR", error);
+        }
+
+        void removeAttribute(EntityID obj, const QString &name)
+        {
+            Client::shared().callCommand("CLASS.REMOVE_ATTRIBUTE", obj, name);
+        }
+
+        void onAttributeRemoved(const std::function<void (EntityID, QString)> &then)
+        {
+            Client::shared().registerReply("CLASS.ATTRIBUTE_REMOVED", then);
+        }
+
+        void onRemoveAttributeError(const std::function<void (EntityID, QString, QString)> &error)
+        {
+            Client::shared().registerReply("CLASS.REMOVE_ATTRIBUTE.ERROR", error);
+        }
+    }
 }
