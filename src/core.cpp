@@ -497,5 +497,20 @@ namespace core
         {
             Client::shared().registerReply("CLASS.REMOVE_ATTRIBUTE.ERROR", error);
         }
+
+        void renameAttribtue(EntityID obj, const QString &name, const QString &newname)
+        {
+            Client::shared().callCommand("CLASS.RENAME_ATTRIBUTE", obj, name, newname);
+        }
+
+        void onAttributeRenamed(const std::function<void (EntityID, QString, QString)> &then)
+        {
+            Client::shared().registerReply("CLASS.ATTRIBUTE_RENAMED", then);
+        }
+
+        void onRenameAttributeError(const std::function<void (EntityID, QString, QString, QString)> &error)
+        {
+            Client::shared().registerReply("CLASS.RENAME_ATTRIBUTE.ERROR", error);
+        }
     }
 }
