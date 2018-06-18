@@ -498,7 +498,7 @@ namespace core
             Client::shared().registerReply("CLASS.REMOVE_ATTRIBUTE.ERROR", error);
         }
 
-        void renameAttribtue(EntityID obj, const QString &name, const QString &newname)
+        void renameAttribute(EntityID obj, const QString &name, const QString &newname)
         {
             Client::shared().callCommand("CLASS.RENAME_ATTRIBUTE", obj, name, newname);
         }

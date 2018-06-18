@@ -259,7 +259,7 @@ inline namespace core
         void onAttributeRemoved(std::function<void(EntityID, QString)> const &then);
         void onRemoveAttributeError(std::function<void(EntityID, QString, QString)> const &error);
 
-        void renameAttribtue(EntityID obj, QString const &name, QString const &newname);
+        void renameAttribute(EntityID obj, QString const &name, QString const &newname);
         void onAttributeRenamed(std::function<void(EntityID, QString, QString)> const &then);
         void onRenameAttributeError(std::function<void(EntityID, QString, QString, QString)> const &error);
 
