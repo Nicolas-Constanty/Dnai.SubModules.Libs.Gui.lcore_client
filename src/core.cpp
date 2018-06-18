@@ -512,5 +512,20 @@ namespace core
         {
             Client::shared().registerReply("CLASS.RENAME_ATTRIBUTE.ERROR", error);
         }
+
+        void setFunctionAsMember(EntityID obj, const QString &name)
+        {
+            Client::shared().callCommand("CLASS.SET_FUNCTION_AS_MEMBER", obj, name);
+        }
+
+        void onFunctionSetAsMember(const std::function<void (EntityID, QString, EntityID)> &then)
+        {
+            Client::shared().registerReply("CLASS.FUNCTION_SET_AS_MEMBER", then);
+        }
+
+        void onSetFunctionAsMemberError(const std::function<void (EntityID, QString, QString)> &error)
+        {
+            Client::shared().registerReply("CLASS.SET_FUNCTION_AS_MEMBER.ERROR", error);
+        }
     }
 }

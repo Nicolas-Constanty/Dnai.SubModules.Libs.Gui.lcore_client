@@ -263,9 +263,12 @@ inline namespace core
         void onAttributeRenamed(std::function<void(EntityID, QString, QString)> const &then);
         void onRenameAttributeError(std::function<void(EntityID, QString, QString, QString)> const &error);
 
+        void setFunctionAsMember(EntityID obj, QString const &name);
+        void onFunctionSetAsMember(std::function<void(EntityID, QString, EntityID)> const &then);
+        void onSetFunctionAsMemberError(std::function<void(EntityID, QString, QString)> const &error);
+
         //get attributes
         //get attribute
-        //set function as member
     }
 }
 
