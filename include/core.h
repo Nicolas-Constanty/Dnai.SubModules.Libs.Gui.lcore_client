@@ -245,7 +245,10 @@ inline namespace core
 
     namespace list
     {
-        //set type
+        void setType(EntityID listId, EntityID typeId);
+        void onTypeSet(std::function<void(EntityID, EntityID)> const &then);
+        void onSetTypeError(std::function<void(EntityID, EntityID, QString)> const &error);
+
         //get type
     }
 

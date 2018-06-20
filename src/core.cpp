@@ -528,4 +528,22 @@ namespace core
             Client::shared().registerReply("CLASS.SET_FUNCTION_AS_MEMBER.ERROR", error);
         }
     }
+
+    namespace list
+    {
+        void setType(EntityID listId, EntityID typeId)
+        {
+            Client::shared().callCommand("LIST.SET_TYPE", listId, typeId);
+        }
+
+        void onTypeSet(const std::function<void (EntityID, EntityID)> &then)
+        {
+            Client::shared().registerReply("LIST.TYPE_SET", then);
+        }
+
+        void onSetTypeError(const std::function<void (EntityID, EntityID, QString)> &error)
+        {
+            Client::shared().registerReply("LIST.SET_TYPE.ERROR", error);
+        }
+    }
 }
