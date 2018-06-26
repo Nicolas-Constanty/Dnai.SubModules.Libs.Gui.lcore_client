@@ -338,17 +338,17 @@ namespace core
             Client::shared().registerReply("FUNCTION.SET_ENTRY_POINT.ERROR", error);
         }
 
-        void remove(EntityID function, InstructionID instruction)
+        void removeInstruction(EntityID function, InstructionID instruction)
         {
             Client::shared().callCommand("FUNCTION.REMOVE_INSTRUCTION", function, instruction);
         }
 
-        void onRemoved(const std::function<void (EntityID, InstructionID)> &then)
+        void onInstructionRemoved(const std::function<void (EntityID, InstructionID)> &then)
         {
             Client::shared().registerReply("FUNCTION.INSTRUCTION_REMOVED", then);
         }
 
-        void onRemoveError(const std::function<void (EntityID, InstructionID, QString)> &error)
+        void onRemoveInstructionError(const std::function<void (EntityID, InstructionID, QString)> &error)
         {
             Client::shared().registerReply("FUNCTION.REMOVE_INSTRUCTION.ERROR", error);
         }

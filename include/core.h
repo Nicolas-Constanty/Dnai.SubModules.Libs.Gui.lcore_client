@@ -200,9 +200,9 @@ inline namespace core
         void onEntryPointSet(std::function<void(EntityID, InstructionID)> const &then);
         void onSetEntryPointError(std::function<void(EntityID, InstructionID, QString)> const &error);
 
-        void remove(EntityID function, InstructionID instruction);
-        void onRemoved(std::function<void(EntityID, InstructionID)> const &then);
-        void onRemoveError(std::function<void(EntityID, InstructionID, QString)> const &error);
+        void removeInstruction(EntityID function, InstructionID instruction);
+        void onInstructionRemoved(std::function<void(EntityID, InstructionID)> const &then);
+        void onRemoveInstructionError(std::function<void(EntityID, InstructionID, QString)> const &error);
 
         namespace instruction
         {
