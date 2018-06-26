@@ -338,23 +338,23 @@ namespace core
             Client::shared().registerReply("FUNCTION.SET_ENTRY_POINT.ERROR", error);
         }
 
+        void remove(EntityID function, InstructionID instruction)
+        {
+            Client::shared().callCommand("FUNCTION.REMOVE_INSTRUCTION", function, instruction);
+        }
+
+        void onRemoved(const std::function<void (EntityID, InstructionID)> &then)
+        {
+            Client::shared().registerReply("FUNCTION.INSTRUCTION_REMOVED", then);
+        }
+
+        void onRemoveError(const std::function<void (EntityID, InstructionID, QString)> &error)
+        {
+            Client::shared().registerReply("FUNCTION.REMOVE_INSTRUCTION.ERROR", error);
+        }
+
         namespace instruction
         {
-            void remove(EntityID function, InstructionID instruction)
-            {
-                Client::shared().callCommand("FUNCTION.INSTRUCTION.REMOVE", function, instruction);
-            }
-
-            void onRemoved(const std::function<void (EntityID, InstructionID)> &then)
-            {
-                Client::shared().registerReply("FUNCTION.INSTRUCTION.REMOVED", then);
-            }
-
-            void onRemoveError(const std::function<void (EntityID, InstructionID, QString)> &error)
-            {
-                Client::shared().registerReply("FUNCTION.INSTRUCTION.REMOVE.ERROR", error);
-            }
-
             void linkData(EntityID function, InstructionID instruction, const QString &inputName, InstructionID fromInstruction, const QString &output)
             {
                 Client::shared().callCommand("FUNCTION.INSTRUCTION.LINK_DATA", function, instruction, inputName, fromInstruction, output);

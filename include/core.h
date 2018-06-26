@@ -200,12 +200,12 @@ inline namespace core
         void onEntryPointSet(std::function<void(EntityID, InstructionID)> const &then);
         void onSetEntryPointError(std::function<void(EntityID, InstructionID, QString)> const &error);
 
+        void remove(EntityID function, InstructionID instruction);
+        void onRemoved(std::function<void(EntityID, InstructionID)> const &then);
+        void onRemoveError(std::function<void(EntityID, InstructionID, QString)> const &error);
+
         namespace instruction
         {
-            void remove(EntityID function, InstructionID instruction);
-            void onRemoved(std::function<void(EntityID, InstructionID)> const &then);
-            void onRemoveError(std::function<void(EntityID, InstructionID, QString)> const &error);
-
             void linkData(EntityID function, InstructionID from, QString const &output, InstructionID to, QString const &input);
             void onDataLinked(std::function<void(EntityID, InstructionID, QString, InstructionID, QString)> const &then);
             void onLinkDataError(std::function<void(EntityID, InstructionID, QString, InstructionID, QString, QString)> const &error);
