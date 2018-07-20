@@ -14,6 +14,9 @@ CONFIG += c++14
 DESTDIR = $$PWD/../
 
 TEMPLATE = lib
+CONFIG(release, debug|release) {
+DEFINES += QT_NO_DEBUG_OUTPUT
+}
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
