@@ -46,7 +46,7 @@ namespace core
 
         void load(const QString &path)
         {
-            Client::shared().callCommand("GLOBAL.LOAD", path);
+            Client::shared().callCommand("GLOBAL.LOAD_FROM", path);
         }
 
         void onLoaded(const std::function<void (QString, EntityID)> &then)
@@ -56,12 +56,12 @@ namespace core
 
         void onLoadError(const std::function<void (QString, QString)> &error)
         {
-            Client::shared().registerReply("GLOBAL.LOAD.ERROR", error);
+            Client::shared().registerReply("GLOBAL.LOAD_FROM.ERROR", error);
         }
 
         void save(const QString &path)
         {
-            Client::shared().callCommand("GLOBAL.SAVE", path);
+            Client::shared().callCommand("GLOBAL.SAVE_TO", path);
         }
 
         void onSaved(const std::function<void (QString)> &then)
@@ -71,7 +71,7 @@ namespace core
 
         void onSaveError(const std::function<void (QString, QString)> &error)
         {
-            Client::shared().registerReply("GLOBAL.SAVE.ERROR", error);
+            Client::shared().registerReply("GLOBAL.SAVE_TO.ERROR", error);
         }
 
         void reset()
